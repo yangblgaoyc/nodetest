@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "my first package",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "express3-handlebars": "^0.5.2"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
