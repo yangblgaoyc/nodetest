@@ -21,7 +21,16 @@ app.get('/',function(req,res){
 
 app.get('/about',function(req,res){
 	var randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-	res.render('about',{fortune:randomFortune});
+res.render('about',{fortune:randomFortune});
+});
+
+app.get('/greeting',function(req,res){
+	res.render('greeting',{
+		'message':'welcome',
+		'style':req.query.style,
+		//'userid':req.cookie.userid,
+		//'username':req.session.username,
+	})
 });
 
 //404
@@ -30,7 +39,7 @@ app.use(function(req,res,next){
 	res.render('404');
 });
 
-//500
+//500或统一服务器error错误
 app.use(function(err,req,res,next){
 	console.error(err.stack);
 	res.status(500);
