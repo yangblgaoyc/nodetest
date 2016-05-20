@@ -7,6 +7,7 @@ app.set('view engine','handlebars');
 app.set('port',process.env.PORT||3000);
 
 app.use(express.static(__dirname + '/public'));
+app.use(require('body-parser')());
 
 var fortunes = [
 	"conquer your feas or they will conquer you.",
@@ -21,7 +22,7 @@ app.get('/',function(req,res){
 
 app.get('/about',function(req,res){
 	var randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-res.render('about',{fortune:randomFortune});
+	res.render('about',{fortune:randomFortune});
 });
 
 app.get('/greeting',function(req,res){
@@ -32,6 +33,28 @@ app.get('/greeting',function(req,res){
 		//'username':req.session.username,
 	})
 });
+
+app.get('/post_test',function(req,res){
+	res.render('post_test');
+});
+
+app.get('/thank-you',function(req,res){
+	res.render('thank-you');
+});
+
+app.get('/database-error',function(req,res){
+	res.render('database-error');
+});
+
+app.post('/process-contact',function(req,res){
+	console.log('Received contact from' + req.body.name + '<' + req.body.email + '>');
+	try{
+		return req.xhr ? res.render({succes:true}) : res.redirect(303,'/thank-you')
+	}
+	catch(ex) {
+		return req.xhr ? res.json({error:'Database error'}) : res.redirect(303,'/database-error');
+	}
+})
 
 //404
 app.use(function(req,res,next){

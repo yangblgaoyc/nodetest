@@ -4,6 +4,7 @@
   "description": "my first package",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.15.1",
     "express3-handlebars": "^0.5.2"
   },
   "devDependencies": {},
