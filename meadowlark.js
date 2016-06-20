@@ -1,12 +1,21 @@
 ﻿var express = require("express");
 var app = express();
-var handlebars = require('express3-handlebars').create({defaultLayout:'main'});
+var handlebars = require('express3-handlebars').create({
+	defaultLayout:'main',
+	helpers:{
+		section:function(name,options){
+			if(!this._sections) this._sections = {};
+			this._sections[name] = options.fn(this);
+			return null;
+		}
+	}
+});
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
 
 app.set('port',process.env.PORT||3000);
 
-app.use(express.static(__dirname + '/public'));
+app.use( '/public',express.static(__dirname + '/public'));
 app.use(require('body-parser')());
 
 var fortunes = [
@@ -25,17 +34,22 @@ app.get('/about',function(req,res){
 	res.render('about',{fortune:randomFortune});
 });
 
+var tours = [
+	{id:0,name:'Hood River',price:99.99},
+	{id:1,name:'Oregon Coast',price:149.95}
+]
+
+app.get('/api/tours',function(req,res){
+	res.json(tours);
+})
+
 app.get('/greeting',function(req,res){
 	res.render('greeting',{
 		'message':'welcome',
-		'style':req.query.style,
+		//'style':req.query.style,
 		//'userid':req.cookie.userid,
 		//'username':req.session.username,
 	})
-});
-
-app.get('/post_test',function(req,res){
-	res.render('post_test');
 });
 
 app.get('/thank-you',function(req,res){
@@ -54,6 +68,47 @@ app.post('/process-contact',function(req,res){
 	catch(ex) {
 		return req.xhr ? res.json({error:'Database error'}) : res.redirect(303,'/database-error');
 	}
+});
+
+app.get('/jquerytest',function(req,res){
+	res.render('jquerytest')
+});
+
+function getWeatherData(){
+	return {
+		loactions :[
+			{
+				'name': 'Portland',
+				'forecastUrl':'http://www.wunderground.com/US/OR/Portland.html',
+				'icon':'http://icon-ak.wxug.com/i/c/k/cloudy.gif',
+				'weather':'Overcast',
+				'temp':'54.1 F(12.3 C)'
+			},
+			{
+				'name': 'Bend',
+				'forecastUrl':'http://www.wunderground.com/US/OR/Bend.html',
+				'icon':'http://icon-ak.wxug.com/i/c/k/partlycloudy.gif',
+				'weather':'Partly Cloudy',
+				'temp':'55.0 F(12.8 C)'
+			},
+			{
+				'name': 'Manzanita',
+				'forecastUrl':'http://www.wunderground.com/US/OR/Manzanita.html',
+				'icon':'http://icon-ak.wxug.com/i/c/k/rain.gif',
+				'weather':'Light Rain',
+				'temp':'55.0 F(12.8 C)'
+			}
+
+		]
+	}
+}
+
+app.use(function(req,res,next){
+	if(!res.locals.partials){
+		res.locals.partials = {};
+	}
+	res.locals.partials.weather = getWeatherData();
+	next();
 })
 
 //404
