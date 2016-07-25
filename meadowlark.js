@@ -18,48 +18,28 @@ app.set('port',process.env.PORT||3000);
 app.use( '/public',express.static(__dirname + '/public'));
 app.use(require('body-parser')());
 
-var fortunes = [
-	"conquer your feas or they will conquer you.",
-	"rivers need springs.",
-	"do not fear what you dont't know",
-	"whenever possible,keep it simple."
-]
+//路由引入
+require('./controller/home.js')(app);
+require('./controller/about.js')(app);
+require('./controller/greeting.js')(app);
+require('./controller/thank-you.js')(app);
+require('./controller/database-error.js')(app);
+require('./controller/jquerytest.js')(app);
+require('./controller/nursery-rhyme.js')(app);
+require('./controller/newsletter.js')(app);
 
-app.get('/',function(req,res){
-	res.render('home')
-});
-
-app.get('/about',function(req,res){
-	var randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-	res.render('about',{fortune:randomFortune});
-});
-
+//静态数据与下个ajax接口整理到一个api模块
 var tours = [
 	{id:0,name:'Hood River',price:99.99},
 	{id:1,name:'Oregon Coast',price:149.95}
 ]
-
+//一下胃待整理接口
+//ajax接口
 app.get('/api/tours',function(req,res){
 	res.json(tours);
-})
-
-app.get('/greeting',function(req,res){
-	res.render('greeting',{
-		'message':'welcome',
-		//'style':req.query.style,
-		//'userid':req.cookie.userid,
-		//'username':req.session.username,
-	})
 });
 
-app.get('/thank-you',function(req,res){
-	res.render('thank-you');
-});
-
-app.get('/database-error',function(req,res){
-	res.render('database-error');
-});
-
+//表单ajax接口
 app.post('/process-contact',function(req,res){
 	console.log('Received contact from' + req.body.name + '<' + req.body.email + '>');
 	try{
@@ -70,15 +50,8 @@ app.post('/process-contact',function(req,res){
 	}
 });
 
-app.get('/jquerytest',function(req,res){
-	res.render('jquerytest')
-});
-
-app.get('/nursery-rhyme', function(req, res) {
-	res.render('nursery-rhyme');
-});
-
-app.get('/data/nursery-rhyme', function(req, res){
+//ajax接口
+app.get('/api/nursery-rhyme', function(req, res){
 	res.json({
 		animal: 'squirrel',
 		bodyPart: 'tail',
@@ -87,7 +60,7 @@ app.get('/data/nursery-rhyme', function(req, res){
 	});
 });
 
-
+//公用组件
 function getWeatherData(){
 	return {
 		loactions :[
@@ -116,14 +89,23 @@ function getWeatherData(){
 		]
 	}
 }
-
+//公用组件接上
 app.use(function(req,res,next){
 	if(!res.locals.partials){
 		res.locals.partials = {};
 	}
 	res.locals.partials.weather = getWeatherData();
 	next();
-})
+});
+
+app.post('/process', function(req, res){
+	console.log('Form (from querystring): ' + req.query.form);
+	console.log('CSRF token (from hidden form field): ' + req.body._csrf);
+	console.log('Name (from visible form field): ' + req.body.name);
+	console.log('Email (from visible form field): ' + req.body.email);
+	res.redirect(303, '/thank-you');
+});
+
 
 //404
 app.use(function(req,res,next){
