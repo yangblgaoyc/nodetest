@@ -4,7 +4,7 @@ module.exports = function(app){
             animal: 'squirrel',
             bodyPart: 'tail',
             adjective: 'bushy',
-            noun: 'heck',
+            noun: 'heck'
         });
     });
 }

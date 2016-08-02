@@ -27,12 +27,14 @@ require('./controller/database-error.js')(app);
 require('./controller/jquerytest.js')(app);
 require('./controller/nursery-rhyme.js')(app);
 require('./controller/newsletter.js')(app);
+require('./controller/vacation-photo.js')(app);
 
 //api路由引入
 require('./api/tours.js')(app);
 require('./api/process-contact.js')(app);
 require('./api/nursery-rhyme.js')(app);
 require('./api/process.js')(app);
+require('./api/vacation-photo.js')(app);
 
 //公用组件js引入
 require('./component/weatherData.js')(app);
