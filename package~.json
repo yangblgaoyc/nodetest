@@ -24,12 +24,11 @@
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.26.0",
     "eslint": "^5.8.0",
-    "express-handlebars": "^3.0.0",
-    "express-hbs": "^1.0.4",
-    "hbs": "^2.9.0"
+    "babel-eslint":"^10.0.1",
+    "eslint":"^5.8.0"
   },
   "scripts": {
-    "test": "mocha --ui qunit --compilers js:babel-core/register",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d lib",
     "script-name": "babel-node es6.js",
     "lint": "eslint my-files.js"

@@ -1,21 +1,44 @@
 ﻿var express = require("express");
 var app = express();
-var handlebars = require('express3-handlebars').create({
-	defaultLayout:'main',
-	helpers:{
-		section:function(name,options){
-			if(!this._sections) this._sections = {};
-			this._sections[name] = options.fn(this);
-			return null;
-		}
-	}
-});
-app.engine('handlebars',handlebars.engine);
-app.set('view engine','handlebars');
+var path = require('path');
+var hbs = require('express-hbs');
+// var handlebars = require('express3-handlebars').create({
+// 	defaultLayout:'main',
+// 	helpers:{
+// 		section:function(name,options){
+// 			if(!this._sections) this._sections = {};
+// 			this._sections[name] = options.fn(this);
+// 			return null;
+// 		}
+// 	}
+// });
+// app.engine('handlebars',handlebars.engine);
+// app.set('view engine','handlebars');
+// 加载hbs模块
+
+
+// 初始化and启用handlebars引擎
+function relative(myPath) {
+    return path.join(__dirname, myPath);
+}
+
+app.engine('hbs', hbs.express4({
+    partialsDir: relative('views/partials'),
+    layoutsDir: relative('views/layouts'),
+    defaultLayout: relative('views/layouts/default.hbs')
+}));
+app.set('view engine', 'hbs');
+
+// var helpers = require('./helpers');
+// helpers.setup(hbs);
+// helpers 暂时没用 参考https://www.cnblogs.com/qieguo/p/5811988.html
+
+app.set('views', relative('views'));
 
 app.set('port',process.env.PORT||3000);
 
-app.use( '/public',express.static(__dirname + '/public'));
+// 设置静态呢文件目录
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('body-parser')());
 
 //路由引入
