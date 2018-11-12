@@ -8,6 +8,11 @@ module.exports=function(app){
 
     app.get('/about',function(req,res){
         var randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-        res.render('about',{fortune:randomFortune});
+        res.render('about',{
+            "title":"关于",
+            css: ['/styles/test.css'],
+            js: [''],
+            fortune:randomFortune
+        });
     });
 }

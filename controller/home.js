@@ -5,6 +5,5 @@ module.exports = function(app){
            css: ['/styles/test.css'],
            js: ['']
        });
-
     });
 }

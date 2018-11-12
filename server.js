@@ -25,17 +25,19 @@ function relative(myPath) {
 app.engine('hbs', hbs.express4({
     partialsDir: relative('views/partials'),
     layoutsDir: relative('views/layouts'),
-    defaultLayout: relative('views/layouts/default.hbs')
+    defaultLayout: relative('views/layouts/default.hbs'),
 }));
 app.set('view engine', 'hbs');
 
-// var helpers = require('./helpers');
-// helpers.setup(hbs);
+var helpers = require('./helpers/helpers');
+helpers.setup(hbs);
 // helpers 暂时没用 参考https://www.cnblogs.com/qieguo/p/5811988.html
 
 app.set('views', relative('views'));
 
 app.set('port',process.env.PORT||3000);
+
+
 
 // 设置静态呢文件目录
 app.use(express.static(path.join(__dirname, 'public')));
