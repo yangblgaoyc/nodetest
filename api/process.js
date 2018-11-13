@@ -1,7 +1,5 @@
 module.exports = function(app){
     app.post('/process', function(req, res){
-        console.log(req.xhr,req.accepts('json,html'))
-
         if(req.xhr || req.accepts('json,html')==='json'){
         // 如果发生错误,应该发送 { error: 'error description' }
             res.send({ success: true });
