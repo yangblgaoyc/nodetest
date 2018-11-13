@@ -1,21 +1,9 @@
-﻿var express = require("express");
-var app = express();
-var path = require('path');
-var hbs = require('express-hbs');
-// var handlebars = require('express3-handlebars').create({
-// 	defaultLayout:'main',
-// 	helpers:{
-// 		section:function(name,options){
-// 			if(!this._sections) this._sections = {};
-// 			this._sections[name] = options.fn(this);
-// 			return null;
-// 		}
-// 	}
-// });
-// app.engine('handlebars',handlebars.engine);
-// app.set('view engine','handlebars');
-// 加载hbs模块
-
+﻿const express = require("express");
+const app = express();
+const path = require('path');
+const hbs = require('express-hbs');
+const fs = require('fs');
+const http = require("http");
 
 // 初始化and启用handlebars引擎
 function relative(myPath) {
@@ -29,40 +17,35 @@ app.engine('hbs', hbs.express4({
 }));
 app.set('view engine', 'hbs');
 
-var helpers = require('./helpers/helpers');
+const helpers = require('./helpers/helpers');
 helpers.setup(hbs);
 // helpers 暂时没用 参考https://www.cnblogs.com/qieguo/p/5811988.html
 
 app.set('views', relative('views'));
-
 app.set('port',process.env.PORT||3000);
-
-
 
 // 设置静态呢文件目录
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('body-parser')());
 
 //路由引入
-require('./controller/home.js')(app);
-require('./controller/about.js')(app);
-require('./controller/greeting.js')(app);
-require('./controller/thank-you.js')(app);
-require('./controller/database-error.js')(app);
-require('./controller/jquerytest.js')(app);
-require('./controller/nursery-rhyme.js')(app);
-require('./controller/newsletter.js')(app);
-require('./controller/vacation-photo.js')(app);
+const routes = fs.readdirSync('./controller')
+routes.forEach(function (item) {
+    require('./controller/'+item)(app);
+});
 
 //api路由引入
-require('./api/tours.js')(app);
-require('./api/process-contact.js')(app);
-require('./api/nursery-rhyme.js')(app);
-require('./api/process.js')(app);
-require('./api/vacation-photo.js')(app);
+const apis = fs.readdirSync('./api')
+apis.forEach(function (item) {
+    require('./api/'+item)(app);
+});
 
 //公用组件js引入
-require('./component/weatherData.js')(app);
+const components = fs.readdirSync('./component')
+components.forEach(function (item) {
+    require('./component/'+item)(app);
+});
+//更智能的路由引入请参考《Node与Express开发》143页。
 
 //404
 app.use(function(req,res,next){
@@ -77,6 +60,19 @@ app.use(function(err,req,res,next){
 	res.render('500')
 });
 
-app.listen(app.get('port'),function(){
-	console.log('express started on http://localhost:' + app.get('port') + 'press ctrl-c; to terminate')
-});
+// 引用集群，防止线程死掉而宕机
+function startServer(){
+    http.createServer(app).listen(app.get('port'),function(){
+        console.log('express started in http://localhost:' + app.get('env') + 'mode on http://localhost: ' + app.get('port') + ';press ctrl-c; to terminate')
+    });
+}
+
+if(require.main === module){
+    // 本js应用程序直接运行；启用应用服务器；
+    startServer();
+}
+else{
+    // 应用 程序作为一个模块通过"require"引入：导出函数
+    // 创建服务期
+    module.exports = startServer;
+}

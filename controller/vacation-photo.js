@@ -1,6 +1,6 @@
 module.exports=function(app){
     app.get('/vacation-photo',function(req,res){
-        var now = new Date();
+        const now = new Date();
         res.render('vacation-photo',{
             "title":"vacation-photo",
             css: ['/styles/test.css'],

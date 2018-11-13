@@ -1,5 +1,5 @@
 module.exports=function(app){
-    var fortunes = [
+    const fortunes = [
         "conquer your feas or they will conquer you.",
         "rivers need springs.",
         "do not fear what you dont't know",
