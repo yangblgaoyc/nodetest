@@ -4,13 +4,16 @@
   "description": "my first package",
   "main": "index.js",
   "dependencies": {
+    "admin-mongo": "0.0.23",
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.15.1",
     "bootstrap": "^3.3.6",
     "express": "^4.14.0",
+    "express-hbs": "^1.0.4",
     "express3-handlebars": "^0.5.2",
     "formidable": "^1.0.17",
+    "mongoose": "^5.3.12",
     "supervisor": "^0.11.0"
   },
   "devDependencies": {
@@ -23,10 +26,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.26.0",
-    "eslint": "^5.8.0",
-    "express-handlebars": "^3.0.0",
-    "express-hbs": "^1.0.4",
-    "hbs": "^2.9.0"
+    "eslint": "^5.8.0"
   },
   "scripts": {
     "test": "mocha --ui qunit --compilers js:babel-core/register",

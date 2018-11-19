@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="611c420a-c58b-4d07-a577-bdb59234ef99" name="Default" comment="修改hbs引入方式整理完毕">
-      <change afterPath="$PROJECT_DIR$/server_cluster.js" afterDir="false" />
+    <list default="true" id="611c420a-c58b-4d07-a577-bdb59234ef99" name="Default" comment="整理路由和集群管理">
+      <change afterPath="$PROJECT_DIR$/instructions.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tours.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/tours.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/vacation-photo.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/vacation-photo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/about.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/about.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/vacation-photo.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/vacation-photo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="nodetest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,13 +22,14 @@
     <session id="989096948">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.35" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -40,20 +38,22 @@
           <entry key="css" value="13" />
           <entry key="eslintrc" value="47" />
           <entry key="handlebars" value="3" />
-          <entry key="hbs" value="37" />
+          <entry key="hbs" value="38" />
+          <entry key="html" value="189" />
           <entry key="js" value="376" />
-          <entry key="json" value="181" />
+          <entry key="json" value="186" />
           <entry key="script" value="1" />
-          <entry key="txt" value="13" />
+          <entry key="txt" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="13" />
-          <entry key="Handlebars/Mustache" value="40" />
-          <entry key="JSON" value="291" />
+          <entry key="HTML" value="189" />
+          <entry key="Handlebars/Mustache" value="41" />
+          <entry key="JSON" value="296" />
           <entry key="JavaScript" value="376" />
-          <entry key="PLAIN_TEXT" value="14" />
+          <entry key="PLAIN_TEXT" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -66,26 +66,28 @@
           <entry key="eslintrc" value="1" />
           <entry key="gitignore" value="1" />
           <entry key="handlebars" value="16" />
-          <entry key="hbs" value="32" />
-          <entry key="html" value="2" />
-          <entry key="js" value="68" />
-          <entry key="json" value="5" />
+          <entry key="hbs" value="37" />
+          <entry key="html" value="6" />
+          <entry key="js" value="76" />
+          <entry key="json" value="11" />
           <entry key="map" value="1" />
           <entry key="mime" value="1" />
           <entry key="regjsparser" value="1" />
           <entry key="semver" value="1" />
           <entry key="uglifyjs" value="1" />
+          <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="3" />
-          <entry key="HTML" value="2" />
-          <entry key="Handlebars/Mustache" value="48" />
-          <entry key="JSON" value="8" />
-          <entry key="JavaScript" value="75" />
+          <entry key="HTML" value="6" />
+          <entry key="Handlebars/Mustache" value="53" />
+          <entry key="JSON" value="14" />
+          <entry key="JavaScript" value="83" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SourceMap" value="1" />
+          <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -96,29 +98,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="289">
+              <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/about.js">
+        <entry file="file://$PROJECT_DIR$/instructions.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api/vacation-photo.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="306">
+              <caret line="17" column="65" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -131,6 +124,7 @@
         <option value="CSS File" />
         <option value="handlebars" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -145,7 +139,6 @@
       <find>weathe</find>
       <find>weathe r</find>
       <find>weather</find>
-      <find>jquery</find>
       <find>express</find>
       <find>express4</find>
       <find>create</find>
@@ -156,9 +149,13 @@
       <find>bootstrap</find>
       <find>btnNurseryRhyme</find>
       <find>var</find>
+      <find>jquery.min.js</find>
+      <find>jquery</find>
+      <find>app_context</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/node_modules/admin-mongo</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -184,7 +181,6 @@
         <option value="$PROJECT_DIR$/node_modules/.bin/script" />
         <option value="$PROJECT_DIR$/node_modules/.bin/script.js" />
         <option value="$PROJECT_DIR$/.eslintrc" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/views/layouts/main.handlebars" />
         <option value="$PROJECT_DIR$/meadowlark.js" />
         <option value="$PROJECT_DIR$/public/styles/test.css" />
@@ -213,6 +209,10 @@
         <option value="$PROJECT_DIR$/controller/vacation-photo.js" />
         <option value="$PROJECT_DIR$/api/tours.js" />
         <option value="$PROJECT_DIR$/api/vacation-photo.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/node_modules/admin-mongo/package.json" />
+        <option value="$PROJECT_DIR$/node_modules/admin-mongo/views/layouts/layout.hbs" />
+        <option value="$PROJECT_DIR$/instructions.html" />
       </list>
     </option>
   </component>
@@ -238,10 +238,10 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="56" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="x" value="54" />
     <option name="y" value="23" />
-    <option name="width" value="2504" />
+    <option name="width" value="2506" />
     <option name="height" value="1417" />
   </component>
   <component name="ProjectView">
@@ -260,7 +260,7 @@
             <path>
               <item name="nodetest" type="b2602c69:ProjectViewProjectNode" />
               <item name="nodetest" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -269,6 +269,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -277,7 +278,7 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="OPEN_URL_DIALOG">
@@ -322,7 +323,7 @@
     </configuration>
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -357,7 +358,8 @@
       <workItem from="1540866136648" duration="11368000" />
       <workItem from="1541638865798" duration="14615000" />
       <workItem from="1541989017529" duration="8252000" />
-      <workItem from="1542072601631" duration="15342000" />
+      <workItem from="1542072601631" duration="20900000" />
+      <workItem from="1542593061243" duration="10645000" />
     </task>
     <task id="LOCAL-00001" summary="api模块独立 + 公用组件独立">
       <created>1469452490870</created>
@@ -387,17 +389,31 @@
       <option name="project" value="LOCAL" />
       <updated>1542079041487</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="整理路由和集群管理">
+      <created>1542102243042</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1542102243042</updated>
+    </task>
+    <task id="LOCAL-00006" summary="整理路由和集群管理">
+      <created>1542102549430</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1542102549430</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139721000" />
+    <option name="totallyTimeSpent" value="155924000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="56" y="23" width="2504" height="1417" extended-state="0" />
+    <frame x="1616" y="0" width="944" height="1440" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1908981" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27843988" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -408,8 +424,8 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4969278" weight="0.3290566" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3116981" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4969278" weight="0.30566037" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30145985" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5030722" side_tool="true" weight="0.32981133" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -453,47 +469,11 @@
     <MESSAGE value="api模块独立 + 公用组件独立" />
     <MESSAGE value="修改hbs引入方式" />
     <MESSAGE value="修改hbs引入方式整理完毕" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改hbs引入方式整理完毕" />
+    <MESSAGE value="整理路由和集群" />
+    <MESSAGE value="整理路由和集群管理" />
+    <option name="LAST_COMMIT_MESSAGE" value="整理路由和集群管理" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.eslintrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.babelrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/html/post_test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/500.hbs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/database-error.hbs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/greeting.hbs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/express/lib/view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="61" column="10" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/home1.hbs" />
     <entry file="file://$PROJECT_DIR$/node_modules/hbs/lib/hbs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -522,13 +502,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="24" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/home.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -550,24 +523,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/about.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="36" lean-forward="true" selection-start-line="4" selection-end-line="4" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/express-hbs/lib/hbs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5486">
           <caret line="406" column="27" selection-start-line="406" selection-start-column="21" selection-end-line="406" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/resource.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -642,31 +601,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layouts/default.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="46" column="46" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/helpers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server_cluster.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -681,13 +619,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
         </state>
       </provider>
     </entry>
@@ -747,13 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/nursery-rhyme.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/process-contact.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -768,10 +692,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/html/post_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="44" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controller/about.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/about.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="36" lean-forward="true" selection-start-line="4" selection-end-line="4" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layouts/default.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/resource.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/nursery-rhyme.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
+          <caret line="1" column="53" lean-forward="true" selection-start-line="1" selection-start-column="53" selection-end-line="1" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server_cluster.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -779,6 +748,67 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="11" lean-forward="true" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/acorn-jsx/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-172" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/admin-mongo/public/js/ace/worker-javascript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4458">
+          <caret column="43595" selection-start-column="43595" selection-end-column="43595" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/admin-mongo/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="62" column="38" lean-forward="true" selection-start-line="50" selection-start-column="4" selection-end-line="62" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/admin-mongo/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3513">
+          <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/admin-mongo/views/layouts/layout.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instructions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="65" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
         </state>
       </provider>
     </entry>
