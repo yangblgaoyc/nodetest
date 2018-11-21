@@ -4,6 +4,26 @@ const path = require('path');
 const hbs = require('express-hbs');
 const fs = require('fs');
 const http = require("http");
+const mongoose = require('mongoose');
+const credentials = require('./dataCredentials')
+
+const opts = {
+    server: {
+        socketOptions: { keepAlive: 1 }
+    } };
+switch(app.get('env')) {
+    case 'develo' +
+    '' +
+    'pment':
+        mongoose.connect(credentials.mongo.development.connectionString, opts);
+        break;
+    case 'production':
+        mongoose.connect(credentials.mongo.production.connectionString, opts);
+        break;
+    default:
+        throw new Error('Unknown execution environment: ' + app.get('env'));
+}
+
 
 // 初始化and启用handlebars引擎
 function relative(myPath) {
