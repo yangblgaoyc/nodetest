@@ -5,16 +5,15 @@ const hbs = require('express-hbs');
 const fs = require('fs');
 const http = require("http");
 const mongoose = require('mongoose');
-const credentials = require('./dataCredentials')
+const credentials = require('./dataCredentials');
 
 const opts = {
     server: {
         socketOptions: { keepAlive: 1 }
-    } };
+    }
+};
 switch(app.get('env')) {
-    case 'develo' +
-    '' +
-    'pment':
+    case 'development':
         mongoose.connect(credentials.mongo.development.connectionString, opts);
         break;
     case 'production':

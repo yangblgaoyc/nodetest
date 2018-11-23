@@ -1,3 +1,7 @@
 h1{
     color: #0000ff;
 }
+#submit{
+    width:100px;
+    border: 1px solid #777777; background: #737373;
+}
