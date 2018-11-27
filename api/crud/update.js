@@ -1,19 +1,19 @@
-const crud = require('../model/crud.js');
+const crud = require('../../model/crud.js');
 module.exports = function(app){
-    app.get('/retrieve', function(req, res){
+    app.post('/update', function(req, res){
         if(req.xhr || req.accepts('json,html')==='json'){
             // 如果发生错误,应该发送 { error: 'error description' }
-            var opt = {"name": 1 ,"_id": 0};
-            crud.find({},opt, function(err, res_data){
+            var id = req.body.id;
+            var updatevalue = {'name': req.body.name};
+            crud.findByIdAndUpdate(id,updatevalue, function(err, update_data){
                 if (err) {
                     console.log("Error:" + err);
                 }
                 else {
-                    console.log("Res:" + res_data);
+                    console.log("Res:" + update_data);
                     res.send({
-                            success: true ,
-                            data : res_data
-                        });
+                        success: true
+                    });
                 }
             })
         }

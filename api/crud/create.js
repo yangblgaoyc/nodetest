@@ -1,4 +1,4 @@
-const crud = require('../model/crud.js');
+const crud = require('../../model/crud.js');
 module.exports = function(app){
     app.post('/create', function(req, res){
         if(req.xhr || req.accepts('json,html')==='json'){
@@ -9,12 +9,12 @@ module.exports = function(app){
 
                 const fluffy = new crud({ name: req.body.name });
 
-                fluffy.save(function (err, fluffy) {
+                fluffy.save(function (err, returnData) {
                     if (err) {
                         return console.error(err);
                     }
                     else{
-                        fluffy.speak();
+                        returnData.speak();
                         res.send({ success: true });
                     }
                 });

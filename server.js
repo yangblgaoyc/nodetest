@@ -2,27 +2,21 @@
 const app = express();
 const path = require('path');
 const hbs = require('express-hbs');
-const fs = require('fs');
 const http = require("http");
 const mongoose = require('mongoose');
 const credentials = require('./dataCredentials');
+const fs = require('fs')
 
-const opts = {
-    server: {
-        socketOptions: { keepAlive: 1 }
-    }
-};
 switch(app.get('env')) {
     case 'development':
-        mongoose.connect(credentials.mongo.development.connectionString, opts);
+        mongoose.connect(credentials.mongo.development.connectionString, credentials.opts);
         break;
     case 'production':
-        mongoose.connect(credentials.mongo.production.connectionString, opts);
+        mongoose.connect(credentials.mongo.production.connectionString, credentials.opts);
         break;
     default:
         throw new Error('Unknown execution environment: ' + app.get('env'));
 }
-
 
 // 初始化and启用handlebars引擎
 function relative(myPath) {
@@ -47,23 +41,27 @@ app.set('port',process.env.PORT||3000);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('body-parser')());
 
+//遍历所有路由文件函数
+function readDirSync(path) {
+    const route = fs.readdirSync(path);
+    route.forEach(function (ele) {
+        const info = fs.statSync(path + "/" + ele)
+        if (info.isDirectory()) {
+            readDirSync(path + "/" + ele);
+        } else {
+            require(path + '/' + ele)(app);
+        }
+    });
+}
+
 //路由引入
-const routes = fs.readdirSync('./controller')
-routes.forEach(function (item) {
-    require('./controller/'+item)(app);
-});
+readDirSync('./controller');
 
 //api路由引入
-const apis = fs.readdirSync('./api')
-apis.forEach(function (item) {
-    require('./api/'+item)(app);
-});
+readDirSync('./api');
 
 //公用组件js引入
-const components = fs.readdirSync('./component')
-components.forEach(function (item) {
-    require('./component/'+item)(app);
-});
+readDirSync('./component');
 //更智能的路由引入请参考《Node与Express开发》143页。
 
 //404
