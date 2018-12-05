@@ -9,10 +9,10 @@ const fs = require('fs')
 
 switch(app.get('env')) {
     case 'development':
-        mongoose.connect(credentials.mongo.development.connectionString, credentials.opts);
+        mongoose.connect(credentials.mongo.development.connectionString,{useNewUrlParser:true}, credentials.opts);
         break;
     case 'production':
-        mongoose.connect(credentials.mongo.production.connectionString, credentials.opts);
+        mongoose.connect(credentials.mongo.production.connectionString,{useNewUrlParser:true}, credentials.opts);
         break;
     default:
         throw new Error('Unknown execution environment: ' + app.get('env'));
